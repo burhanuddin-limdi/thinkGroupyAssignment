@@ -25,5 +25,17 @@ strike=false;
   ngOnDestroy(): void {
     throw new Error('Method not implemented.');
   }
+  removeTask(task){
+    console.log('unedited',this.tasks);
+    
+    var i = this.tasks.indexOf(task);
+    this.tasks.splice(i,1);
+    console.log('edited array',this.tasks);
+    this.sendTasks();
+    
+  }
+  sendTasks(){
+    this.ss.sendTask(this.ss.recieveTask()[0],this.tasks)
+  }
 
 }

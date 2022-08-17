@@ -39,7 +39,7 @@ export class ListsComponent implements OnInit {
     }
     // localStorage.removeItem('lists');
     this.recieveTask();
-    this.addTask();
+    this.addTask(this.ss.recieveTask()[1]);
   }
 
   saveList() {
@@ -85,12 +85,12 @@ export class ListsComponent implements OnInit {
     this.ss.sendTask(id, tasks);
   }
   recieveTask() {
-    console.log(this.ss.recieveTask());
+    console.log('tasks recieved',this.ss.recieveTask());
   }
-  addTask() {
+  addTask(recievedTask) {
     let newList = this.lists.find((o, i) => {
       if (o.id == this.ss.recieveTask()[0]) {
-        this.lists[i]['tasks'] = this.ss.recieveTask()[1];
+        this.lists[i]['tasks'] = recievedTask;
         this.saveList();
       } else {
         console.log('id not matched');
@@ -101,5 +101,18 @@ export class ListsComponent implements OnInit {
     this.tasklist = list;
     console.log('task list', this.tasklist);
     
+  }
+  activelist;
+  activeList(list:List){
+    this.activelist=list;
+  }
+  deleteList(){
+   var id = this.activelist['id'];
+   this.lists.find((o,i)=>{
+    if (o.id == id) {
+      this.lists.splice(i,1);
+      this.saveList();
+    }
+   })
   }
 }

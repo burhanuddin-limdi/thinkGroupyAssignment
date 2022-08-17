@@ -3,7 +3,7 @@
 >
   <div class="w-1/4">
     <p class="text-[#28D6A3] text-xl my-7 mx-7">LISTS</p>
-    <p class="text-sm mx-7 active rounded-sm px-2 py-1 mb-2" *ngFor="let list of lists" [routerLink]="['tasks',list['id']]" (click)="sendTask(list['id'],list['tasks']);setTaskList(list)">{{list['name']}}</p>
+    <p class="text-sm mx-7 active rounded-sm px-2 py-1 mb- cursor-pointer" *ngFor="let list of lists" [routerLink]="['tasks',list['id']]" (click)="sendTask(list['id'],list['tasks']);setTaskList(list);activeList(list)">{{list['name']}}</p>
     <button
       class="bg-[#28D6A3] text-white absolute bottom-7 left-7 px-8 py-1 rounded-sm text-[10px] hover:bg-[ #44DDD3]"
       routerLink="/newlist"
@@ -12,7 +12,11 @@
     </button>
   </div>
   <div class="w-3/4 bg-[#F9F7FA] rounded-r-md">
-    <p class="text-[#28D6A3] text-xl my-7 mx-7">TASKS</p>
+    <div class="flex">
+
+      <p class="text-[#28D6A3] text-xl my-7 mx-7">TASKS</p>
+      <p class="text-red-500 my-7 absolute right-7" (click)="deleteList()"><i class="fa-solid fa-trash-can"></i></p>
+    </div>
     <router-outlet></router-outlet>
   </div>
   <button *ngIf="tasklist" class="rounded-[100%] bg-[#28D6A3] px-3 py-1 text-white absolute right-7 bottom-7" [routerLink]="['/newtask',tasklist['id']]" (click)="sendTask(tasklist['id'],tasklist['tasks'])">+</button>

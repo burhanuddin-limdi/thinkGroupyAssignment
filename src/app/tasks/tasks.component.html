@@ -1,3 +1,3 @@
-<p class="bg-white mx-7 rounded py-1 px-2 mb-2 "[ngClass]="{'line-through':strike}"(click)='strike=true' *ngFor="let task of tasks">{{task}}</p>
+<p class="bg-white mx-7 rounded py-1 px-2 mb-2 "[ngClass]="{'line-through':strike}"(click)='strike=!strike' *ngFor="let task of tasks">{{task}} <span class="absolute right-10" (click)="removeTask(task)"><i class="fa-solid fa-trash-can"></i></span></p>
 
 
