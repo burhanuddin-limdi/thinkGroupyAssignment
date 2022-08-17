@@ -1,0 +1,27 @@
+<div
+  class="bg-white w-[50%] mx-auto my-auto absolute top-0 bottom-0 h-[75vh] right-0 left-0 rounded-md flex"
+>
+  <div class="w-1/4">
+    <p class="text-[#28D6A3] text-xl my-7 mx-7">LISTS</p>
+    <p class="text-sm mx-7 active rounded-sm px-2 py-1 mb-2" *ngFor="let list of lists" [routerLink]="['tasks',list['id']]" (click)="sendTask(list['id'],list['tasks']);setTaskList(list)">{{list['name']}}</p>
+    <button
+      class="bg-[#28D6A3] text-white absolute bottom-7 left-7 px-8 py-1 rounded-sm text-[10px] hover:bg-[ #44DDD3]"
+      routerLink="/newlist"
+    >
+      + New List
+    </button>
+  </div>
+  <div class="w-3/4 bg-[#F9F7FA] rounded-r-md">
+    <p class="text-[#28D6A3] text-xl my-7 mx-7">TASKS</p>
+    <router-outlet></router-outlet>
+  </div>
+  <button *ngIf="tasklist" class="rounded-[100%] bg-[#28D6A3] px-3 py-1 text-white absolute right-7 bottom-7" [routerLink]="['/newtask',tasklist['id']]" (click)="sendTask(tasklist['id'],tasklist['tasks'])">+</button>
+</div>
+
+<!-- <button class="border border-black" routerLink="/newlist">add new list</button>
+<div *ngFor="let list of lists">
+    <p>{{list['name']}}</p>
+    <p>Tasks</p>
+    <p *ngFor="let task of list['tasks']">{{task}}</p>
+    <button [routerLink]="['newtask',list['id']]" (click)="sendTask(list['id'],list['tasks'])">Add Task</button>
+</div> -->

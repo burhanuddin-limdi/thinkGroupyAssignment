@@ -1,0 +1,25 @@
+<div class="bg-white new-list m-auto w-1/3 px-5 py-5 rounded-sm">
+  <h1 class="text font-sans font-normal text-2xl mb-3">CREATE A NEW LIST</h1>
+<form (ngSubmit)="onSubmit()" #f="ngForm">
+  <input
+    type="text"
+    class="bg-[#F9F7FA] w-full px-2 py-2 rounded"
+    id="listName"
+    ngModel
+    name="listName"
+    required=""
+    placeholder="Enter list name"
+  />
+  <div class="flex w-full justify-end space-x-3 mt-3">
+
+      <button (click)="onCancel()" class="bg-[#F9F7FA] rounded px-2 py-1">Cancel</button>
+      <button type="submit" class="bg-[#28D6A3] rounded px-2 py-1 text-white">Create</button>
+  </div>
+</form>
+</div>
+
+<!-- <form (ngSubmit)="onSubmit()" #f="ngForm">
+  <label for="">new list</label>
+  <input type="text" class="border border-black" name="listName" id="listName" ngModel />
+  <button type="submit" class="block border  border-black">add</button>
+</form> -->
